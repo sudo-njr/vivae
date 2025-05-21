@@ -9,7 +9,7 @@ interface VivaeRequest extends IncomingMessage {
 
 interface VivaeResponse extends ServerResponse {
   setHeaders(headers: Record<string, string>): void;
-  send(body: string | object | any[]): void;
+  send(body: string | object): void;
 }
 
 type Middleware = (
