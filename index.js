@@ -1,3 +1,4 @@
+import { applyConfig } from "./utils/config";
 import http from "http";
 
 function vivae() {
@@ -5,22 +6,7 @@ function vivae() {
   const middlewares = [];
 
   function server(req, res) {
-    const defaultConfig = {
-      allowQueries: true,
-    };
-
-    server.config = server.config || {};
-
-    for (const key in defaultConfig) {
-      if (
-        typeof defaultConfig[key] === "object" &&
-        defaultConfig[key] !== null
-      ) {
-        server.config[key] = { ...defaultConfig[key] };
-      } else {
-        server.config[key] = defaultConfig[key];
-      }
-    }
+    applyConfig(server);
 
     req.path = req.url.match(/^[^?]*/)[0];
 
@@ -97,3 +83,5 @@ function vivae() {
 
   return server;
 }
+
+export default vivae;
