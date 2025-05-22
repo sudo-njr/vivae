@@ -24,6 +24,14 @@ interface VivaeConfig {
     logging?: boolean;
   };
   allowQueries?: boolean;
+  easyHeaders?: {
+    autoEncoding?: boolean;
+    headers?: {
+      [fileExtension: string]: {
+        [header: string]: string;
+      };
+    };
+  };
 }
 
 interface VivaeServer {
