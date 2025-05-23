@@ -17,8 +17,6 @@ type Middleware = (
   next: (err?: any) => void,
 ) => void;
 
-type Handler = (req: VivaeRequest, res: VivaeResponse) => void;
-
 interface VivaeConfig {
   debug?: {
     logging?: boolean;
@@ -37,10 +35,9 @@ interface VivaeConfig {
 interface VivaeServer {
   config?: VivaeConfig;
 
+  use(path: string, method: Method, middleware: Middleware): void;
+  use(path: string, middleware: Middleware): void;
   use(middleware: Middleware): void;
-
-  create(path: string, method: Method, handler: Handler): void;
-  create(path: string, handler: Handler): void;
 
   listen(port: number, callback?: () => void): void;
 }
