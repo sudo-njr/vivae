@@ -39,8 +39,8 @@ interface VivaeServer {
 
   use(middleware: Middleware): void;
 
-  add(path: string, method: Method, handler: Handler): void;
-  add(path: string, handler: Handler): void;
+  create(path: string, method: Method, handler: Handler): void;
+  create(path: string, handler: Handler): void;
 
   listen(port: number, callback?: () => void): void;
 }
