@@ -27,7 +27,7 @@ import vivae from "vivae";
 const app = vivae();
 const port = 3000;
 
-app.create("/", (req, res) => {
+app.use("/", "GET", (req, res) => {
   res.send("Hello World!");
 });
 
