@@ -1,6 +1,6 @@
 {
   "name": "vivae",
-  "type": "module",
+  "type": "commonjs",
   "version": "1.0.1",
   "license": "MIT",
   "main": "lib/index.js",
