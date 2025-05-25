@@ -9,6 +9,6 @@
     "lib"
   ],
   "scripts": {
-    "test": "node test/index.test.js"
+    "test": "node tests/index.test.js"
   }
 }
