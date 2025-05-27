@@ -1,13 +1,13 @@
-import assert from "assert";
-import http from "http";
-import vivae from "../lib/index.js";
+const vivae = require("../lib/index.js");
+const assert = require("assert");
+const http = require("http");
 
 const port = 3000;
 
 const app = vivae();
 
-app.add("/api", "GET", (req, res) => {
-  res.send([{ currentPath: req.path }]);
+app.use("/api", "GET", (vobj) => {
+  vobj.send([{ currentPath: vobj.path }]);
 });
 
 app.listen(port, () => {

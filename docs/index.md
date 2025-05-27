@@ -35,13 +35,13 @@ app.config = {
   },
 };
 
-app.use("/", (req, res) => {
-  res.send("Hello World!");
+app.use("/", "GET", (vobj) => {
+  vobj.send("Hello World!");
 });
 
-app.use("/api", "POST", (req, res) => {
+app.use("/api", "POST", (vobj) => {
   // Also supports JSON objects and arrays, Vivae will handle it automatically.
-  res.send([{ path: req.path }]);
+  vobj.send([{ path: vobj.path }]);
 })
 
 app.listen(port, () => {
@@ -65,5 +65,5 @@ If you noticed there was a specific structure to add new routes. The route handl
 
 - `[server]` represents whatever Vivae instance you chose, in the example app this would be `app`.
 - `PATH` is optional and defines what path on the server to apply to, you can leave it empty to apply to all paths.
-- `METHOD` completely optional, must be in all caps see [all HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods). Defaults to "GET".
-- `MIDDLEWARE` includes `req`, `res`, and `next`, allows you to write middleware for specific routes and methods.
+- `METHOD` completely optional, not case sensitive, doesn't need to be capitalized. See [all HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods). Defaults to **all HTTP methods**.
+- `MIDDLEWARE` includes `vobj` object, allows you to write middleware for specific routes and methods.

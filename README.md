@@ -12,6 +12,7 @@ Vivae is a lightweight, dependency-free Node.js framework designed to help you q
 - Adding middleware
 - Content-Type Detection
 - TypeScript support
+- CommonJS and ESM support
 
 ## Installation
 
@@ -21,19 +22,27 @@ npm install vivae
 
 ## Usage Example
 
+ESM:
+
 ```javascript
 import vivae from "vivae";
 
 const app = vivae();
 const port = 3000;
 
-app.use("/", "GET", (req, res) => {
-  res.send("Hello World!");
+app.use("/", "GET", (vobj) => {
+  vobj.send("Hello World!");
 });
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+```
+
+If you're using CommonJS, simply use `require` instead of `import`:
+
+```javascript
+const vivae = require("vivae");
 ```
 
 ## License
