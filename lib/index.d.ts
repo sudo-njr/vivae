@@ -21,7 +21,7 @@ interface VivaeObject {
   respond(options: {
     status?: number;
     headers?: { [key: string]: string };
-  }): void;
+  }): this;
 
   on<E extends keyof Event>(event: E, listener: Event[E]): this;
   once<E extends keyof Event>(event: E, listener: Event[E]): this;
