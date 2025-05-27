@@ -1,21 +1,13 @@
-import { IncomingMessage, ServerResponse } from "http";
-
 type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 
-interface VivaeRequest extends IncomingMessage {
-  path?: string;
-  [key: string]: any;
-}
-
-interface VivaeResponse extends ServerResponse {
+interface VivaeObject {
+  path: string;
+  method: Method;
   send(body: string | object): void;
+  next(err?: any): void;
 }
 
-type Middleware = (
-  req: VivaeRequest,
-  res: VivaeResponse,
-  next: (err?: any) => void,
-) => void;
+type Middleware = (vobj: VivaeObject) => void;
 
 interface VivaeConfig {
   debug?: {
