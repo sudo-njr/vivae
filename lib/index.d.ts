@@ -3,8 +3,17 @@ type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 interface VivaeObject {
   path: string;
   method: Method;
+  status: number;
+
   send(body: string | object): void;
   next(err?: any): void;
+
+  setHeaders(headers: { [key: string]: string }): void;
+
+  respond(options: {
+    status?: number;
+    headers?: { [key: string]: string };
+  }): void;
 }
 
 type Middleware = (vobj: VivaeObject) => void;
