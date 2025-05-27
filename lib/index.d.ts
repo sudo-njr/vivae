@@ -1,5 +1,13 @@
 type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 
+type Event = {
+  data: (chunk: Buffer | string) => void;
+  end: () => void;
+  error: (err: Error) => void;
+  close: () => void;
+  aborted: () => void;
+};
+
 interface VivaeObject {
   path: string;
   method: Method;
@@ -14,6 +22,10 @@ interface VivaeObject {
     status?: number;
     headers?: { [key: string]: string };
   }): void;
+
+  on<E extends keyof Event>(event: E, listener: Event[E]): this;
+  once<E extends keyof Event>(event: E, listener: Event[E]): this;
+  off<E extends keyof Event>(event: E, listener: Event[E]): this;
 }
 
 type Middleware = (vobj: VivaeObject) => void;
