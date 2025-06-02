@@ -8,6 +8,16 @@
   "files": [
     "lib"
   ],
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./plugins": {
+      "require": "./lib/plugins.js",
+      "types": "./lib/plugins.d.ts"
+    }
+  },
   "scripts": {
     "test": "node tests/index.test.js"
   }

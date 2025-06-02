@@ -1,3 +1,5 @@
+import type { Plugin } from "./plugin";
+
 type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 
 type Event = {
@@ -56,5 +58,9 @@ interface VivaeServer {
 }
 
 declare function vivae(): VivaeServer;
+
+declare namespace vivae {
+  function serve(directory: string): Plugin;
+}
 
 export = vivae;
