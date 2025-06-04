@@ -14,6 +14,14 @@ const app = vivae();
 
 Here, `app` is your Vivae server instance, so anywhere you see `[server]` in the docs, it means this instance. You can name your server instance anything, but `app` is the most adopted when naming HTTP servers.
 
+## Configuration - `[server]`.config
+
+### `.debug`
+
+### `.allowQueries`
+
+### `.easyHeaders`
+
 ## Route Handler - `[server]`.use()
 
 The route handler defines how your HTTP server handles each path and it's assosiated method. It's structured like so:
@@ -79,3 +87,7 @@ vobj.respond(200, { "Content-Type": "application/json" });
 ### `.once()`
 
 ### `.off()`
+
+## Server Listener - `[server]`.listen
+
+## Static Serving - `[server]`.serve()
