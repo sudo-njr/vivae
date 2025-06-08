@@ -48,8 +48,6 @@ interface VivaeConfig {
 }
 
 interface VivaeServer {
-  config?: VivaeConfig;
-
   use(path: string, method: Method, middleware: Middleware): void;
   use(path: string, middleware: Middleware): void;
   use(middleware: Middleware): void;
@@ -57,7 +55,7 @@ interface VivaeServer {
   listen(port: number, callback?: () => void): void;
 }
 
-declare function vivae(): VivaeServer;
+declare function vivae(config: VivaeConfig): VivaeServer;
 
 declare namespace vivae {
   function serve(directory: string): Plugin;
