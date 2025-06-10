@@ -57,8 +57,4 @@ interface VivaeServer {
 
 declare function vivae(config: VivaeConfig): VivaeServer;
 
-declare namespace vivae {
-  function serve(directory: string): Plugin;
-}
-
 export = vivae;

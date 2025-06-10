@@ -18,3 +18,5 @@ type PluginFunction<Args extends any[]> = (
 export function createPlugin<Args extends any[]>(
   fn: PluginFunction<Args>,
 ): (...args: Args) => Plugin;
+
+function serve(directory: string): Plugin;
