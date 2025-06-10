@@ -98,4 +98,6 @@ vobj.respond(200, { "Content-Type": "application/json" });
 
 ## Server Listener - `[server]`.listen
 
-## Static Serving - `[server]`.serve()
+# Plugin API
+
+## Static Serving - serve()
