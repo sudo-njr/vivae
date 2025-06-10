@@ -9,7 +9,9 @@ type Event = {
 };
 
 interface VivaeObject {
+  url: string;
   path: string;
+  query: { [key: string]: string | number | boolean } | {};
   method: Method;
   status: number;
 
