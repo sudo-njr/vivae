@@ -19,4 +19,4 @@ export function createPlugin<Args extends any[]>(
   fn: PluginFunction<Args>,
 ): (...args: Args) => Plugin;
 
-function serve(directory: string): Plugin;
+export function serve(directory: string): Plugin;

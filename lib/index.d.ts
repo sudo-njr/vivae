@@ -1,5 +1,3 @@
-import type { Plugin } from "./plugin";
-
 type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 
 type Event = {
