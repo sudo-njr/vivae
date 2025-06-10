@@ -3,7 +3,7 @@ type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
 type Event = {
   data: (chunk: Buffer | string) => void;
   end: () => void;
-  error: (err: Error) => void;
+  error: (error: Error) => void;
   close: () => void;
   aborted: () => void;
 };
@@ -16,7 +16,7 @@ interface VivaeObject {
   status: number;
 
   send(body: string | object): void;
-  next(err?: any): void;
+  next(error?: any): void;
 
   setHeaders(headers: { [key: string]: string }): void;
 
@@ -30,7 +30,9 @@ interface VivaeObject {
   off<E extends keyof Event>(event: E, listener: Event[E]): this;
 }
 
-type Middleware = (vobj: VivaeObject) => void;
+type Middleware =
+  | ((vobj: VivaeObject) => void)
+  | ((error: any, vobj: VivaeObject) => void);
 
 interface VivaeConfig {
   debug?: {
