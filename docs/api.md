@@ -74,7 +74,7 @@ If the current URL has a query, then Vivae will parse it into an object.
 Get the current request method. Changing it doesn't rewrite the method sent to the server.
 
 ```javascript
-app.use("/", "GET", (vobj) => {
+[server].use("/", "GET", (vobj) => {
   vobj.send(vobj.method); // "GET"
 });
 ```
@@ -130,6 +130,33 @@ vobj.respond(200, { "Content-Type": "application/json" });
 # Plugin API
 
 ## Create Plugin - createPlugin()
+
+```javascript
+import { createPlugin } from "vivae/plugins";
+
+createPlugin(FUNCTION);
+```
+
+- `FUNCTION`: Add any argument and return middleware. It's very similar to `[server].use()` except you can use it almost anywhere or create your own package for others to use.
+
+### Example
+
+```javascript
+import { createPlugin } from "vivae/plugins";
+
+const myPlugin = createPlugin((message) => {
+  console.log(message);
+  return (server) => ({
+    path: "/api/user/:userId",
+    method: "POST",
+    middleware: function (vobj) {
+      vobj.send({ message, userId: vobj.params.userId })
+    }
+  })
+});
+
+export default myPlugin;
+```
 
 ## Static Serving - serve()
 
