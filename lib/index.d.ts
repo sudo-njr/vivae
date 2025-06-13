@@ -12,6 +12,7 @@ interface VivaeObject {
   url: string;
   path: string;
   query: { [key: string]: string | number | boolean } | {};
+  params: { [param: string]: string } | {};
   method: Method;
   status: number;
 
