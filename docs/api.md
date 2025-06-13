@@ -59,9 +59,15 @@ The Vivae Object (`vobj`) is a unified version of Node.js's `req` and `res` only
 
 ### `.url`
 
+Returns a string including the path and query.
+
 ### `.path`
 
+Same as `.url` except the query is excluded.
+
 ### `.query`
+
+If the current URL has a query, then Vivae will parse it into an object.
 
 ### `.params`
 
