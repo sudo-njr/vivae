@@ -101,6 +101,14 @@ vobj.status = 404;
 
 ### `.send()`
 
+Using `vobj.send()` allows you to decide what to send the server. It accepts one argument like this:
+
+```javascript
+vobj.send(BODY)
+```
+
+- `BODY`: Can be a string or an object, Vivae will parse the object into JSON and change the `Content-Type` header automatically.
+
 Example:
 
 ```javascript
@@ -109,9 +117,20 @@ vobj.send("Hello world!");
 
 ### `.next()`
 
+```javascript
+vobj.next(ERROR)
+```
+
 ### `.setHeaders()`
 
 Adds headers to the current request.
+
+```javascript
+vobj.setHeaders({ HEADER: VALUE, ... })
+```
+
+- `HEADER`: The header's name/key.
+- `VALUE`: The value to set the header.
 
 Example:
 
