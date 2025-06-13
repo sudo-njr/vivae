@@ -30,7 +30,7 @@ const app = vivae({
 
 ## Route Handler - `[server]`.use()
 
-The route handler defines how your HTTP server handles each path and it's assosiated method. It's structured like so:
+The route handler defines how your HTTP server handles each path and it's assosiated method. It accepts three arguments, the path, method and middleware. It can be structured in any way possible but is recommended to be structued like this:
 
 ```javascript
 [server].use(PATH, METHOD, MIDDLEWARE);
@@ -39,11 +39,19 @@ The route handler defines how your HTTP server handles each path and it's assosi
 - `PATH` (optional): Defines what path on the server to apply to, you can leave it empty to apply to all paths. Supports:
   - Static Paths: e.g. `/`, `/about`
   - Parameterized paths: e.g. `/user/:id`, `/blog/:post_id`
-    - Accessible through `vobj.params`
+    - Accessible through [`vobj.params`](#params)
   - Strict Wildcards `*`: Matches **one or more segments**
   - Dual Wildcards `%` | `**`: Matches **zero or more segments**
-- `METHOD` (optional): The HTTP method, not case sensitive, so it doesn't need to be capitalized. See [all HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods). Defaults to all HTTP methods if it's not given.
+- `METHOD` (optional): The HTTP method, not case sensitive, so it doesn't need to be capitalized. It also supports an array of methods if you want to apply the request to multiple types. See [all HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods). Defaults to all HTTP methods if it's not given.
 - `MIDDLEWARE` (required): A function that allows you to write middleware, includes `vobj` object.
+
+### Example
+
+```javascript
+[server].use(["GET", "POST"], "/about", (vobj) => {
+  vobj.send("Hello World!");
+});
+```
 
 ## Vivae Object
 
@@ -68,6 +76,8 @@ Same as `.url` except the query is excluded.
 If the current URL has a query, then Vivae will parse it into an object.
 
 ### `.params`
+
+Access the parameters from the current request parsed into an object.
 
 ### `.method`
 
@@ -150,9 +160,9 @@ const myPlugin = createPlugin((message) => {
     path: "/api/user/:userId",
     method: "POST",
     middleware: function (vobj) {
-      vobj.send({ message, userId: vobj.params.userId })
-    }
-  })
+      vobj.send({ message, userId: vobj.params.userId });
+    },
+  });
 });
 
 export default myPlugin;
