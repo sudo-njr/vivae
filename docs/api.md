@@ -19,14 +19,22 @@ You can modify how your server behaves by passing an object when the instance is
 ```javascript
 const app = vivae({
   debug: {
-    logging: true,
+    logging: false,
+    warnings: false,
   },
 });
 ```
 
 ### `.debug`
 
+- `.logging` (optional): When you turn this on it logs every request and prints into the server's terminal. Off by default.
+  - Structure: `[METHOD] [PATH]`
+  - Example: `POST /api/123`
+- `.warnings` (optional): This is great during development, Vivae will give you warnings for things you can fix within your code. On by default.
+
 ### `.allowQueries`
+
+Decides if the server should listen to queries. If you were to go to `/about?id=1` it asks the server if that is the same route as `/about`. Otherwise, it'll return the 404 page. Defaults to true.
 
 ## Route Handler - `[server]`.use()
 
@@ -104,7 +112,7 @@ vobj.status = 404;
 Using `vobj.send()` allows you to decide what to send the server. It accepts one argument like this:
 
 ```javascript
-vobj.send(BODY)
+vobj.send(BODY);
 ```
 
 - `BODY`: Can be a string or an object, Vivae will parse the object into JSON and change the `Content-Type` header automatically.
@@ -118,7 +126,7 @@ vobj.send("Hello world!");
 ### `.next()`
 
 ```javascript
-vobj.next(ERROR)
+vobj.next(ERROR);
 ```
 
 ### `.setHeaders()`
