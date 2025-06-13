@@ -73,8 +73,9 @@ interface VivaeConfig {
 }
 
 interface VivaeServer {
-  use(path: string, method: Method, middleware: Middleware): void;
+  use(path: string, method: Method | Method[], middleware: Middleware): void;
   use(path: string, middleware: Middleware): void;
+  use(method: Method | Method[], middleware: Middleware): void;
   use(middleware: Middleware): void;
 
   listen(port: number, callback?: () => void): void;
