@@ -156,11 +156,21 @@ Example:
 vobj.respond(200, { "Content-Type": "application/json" });
 ```
 
-### `.on()`
+### Events `.on()`, `.once()`, `.off()`
 
-### `.once()`
+All events are structured the same. They just work differently.
 
-### `.off()`
+```javascript
+vobj.on | once | off(EVENT, LISTENER);
+```
+
+- `EVENT`: The event name to listen for.
+  - `data`: `(chunk: Buffer | string)` When a new chunk of data is received.
+  - `end`: `()` When the data stream ends.
+  - `error`: `(error: Error)` An error during a request.
+  - `close`: `()` Request stream closes unexpectedly.
+  - `aborted`: `()` Request aborted by client.
+- `LISTENER`: A function that is called when the event occurs. The argument that is passed depends on the event type. They are listed above.
 
 ## Server Listener - `[server]`.listen
 
