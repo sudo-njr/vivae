@@ -1,4 +1,33 @@
-type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "OPTIONS";
+type Method =
+  | "GET"
+  | "HEAD"
+  | "POST"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "OPTIONS"
+  | "TRACE"
+  | "PATCH"
+  | "PROPFIND"
+  | "PROPPATCH"
+  | "MKCOL"
+  | "COPY"
+  | "MOVE"
+  | "LOCK"
+  | "UNLOCK"
+  | "VERSION-CONTROL"
+  | "REPORT"
+  | "CHECKIN"
+  | "CHECKOUT"
+  | "UNCHECKOUT"
+  | "MKWORKSPACE"
+  | "UPDATE"
+  | "LABEL"
+  | "MERGE"
+  | "BASELINE-CONTROL"
+  | "MKACTIVITY"
+  | "ACL"
+  | "SEARCH";
 
 type Event = {
   data: (chunk: Buffer | string) => void;
