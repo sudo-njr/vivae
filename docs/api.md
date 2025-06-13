@@ -73,7 +73,17 @@ If the current URL has a query, then Vivae will parse it into an object.
 
 ### `.method`
 
+Get the current request method. Changing it doesn't rewrite the method sent to the server.
+
+```javascript
+app.use("/", "GET", (vobj) => {
+  vobj.send(vobj.method); // "GET"
+});
+```
+
 ### `.status`
+
+Allows you to send status codes to the browser of the current request.
 
 Example:
 
@@ -93,6 +103,8 @@ vobj.send("Hello world!");
 
 ### `.setHeaders()`
 
+Adds headers to the current request.
+
 Example:
 
 ```javascript
@@ -100,6 +112,8 @@ vobj.setHeaders({ "Content-Type": "application/json" });
 ```
 
 ### `.respond()`
+
+Combines `.status` and `.setHeaders()` into one, allowing you to make your code more readable.
 
 Example:
 
