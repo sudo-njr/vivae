@@ -30,6 +30,8 @@ const app = vivae({
 
 ### `.easyHeaders`
 
+Unlike other settings, this one doesn't handle how Vivae behaves directly. It handles how [`serve()`](#static-serving---serve) and other plugins handle file extensions.
+
 ## Route Handler - `[server]`.use()
 
 The route handler defines how your HTTP server handles each path and it's assosiated method. It's structured like so:
