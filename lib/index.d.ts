@@ -38,6 +38,7 @@ type Middleware =
 interface VivaeConfig {
   debug?: {
     logging?: boolean;
+    warnings?: boolean;
   };
   allowQueries?: boolean;
 }
