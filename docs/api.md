@@ -39,10 +39,11 @@ The route handler defines how your HTTP server handles each path and it's assosi
 ```
 
 - `PATH` (optional): Defines what path on the server to apply to, you can leave it empty to apply to all paths. Supports:
-  - Static Paths:
-  - Parameterized paths:
-  - Strict Wildcards `*`:
-  - Dual Wildcards `%` | `**`:
+  - Static Paths: e.g. `/`, `/about`
+  - Parameterized paths: e.g. `/user/:id`, `/blog/:post_id`
+    - Accessible through `vobj.params`
+  - Strict Wildcards `*`: Matches **one or more segments**
+  - Dual Wildcards `%` | `**`: Matches **zero or more segments**
 - `METHOD` (optional): The HTTP method, not case sensitive, so it doesn't need to be capitalized. See [all HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods). Defaults to all HTTP methods if it's not given.
 - `MIDDLEWARE` (required): A function that allows you to write middleware, includes `vobj` object.
 
