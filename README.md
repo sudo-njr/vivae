@@ -18,7 +18,7 @@ Vivae is a lightweight, dependency-free Node.js framework designed to help you q
 
 ## Performance
 
-Vivae uses less memory than Express or Koa
+Vivae uses less memory and is more stable than Express or Koa.
 
 - Vivae: ~31.55 MB RSS
 - Express v5.1.0: ~43.45 MB
