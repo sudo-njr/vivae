@@ -137,6 +137,13 @@ vobj.respond(200, { "Content-Type": "application/json" });
 
 ## Server Listener - `[server]`.listen
 
+```javascript
+[server].use(PORT, CALLBACK);
+```
+
+- `PORT`: The port number the server will listen to.
+- `CALLBACK` (optional): An optional function if debugging is necessary or adding server starting messages.
+
 # Plugin API
 
 ## Create Plugin - createPlugin()
