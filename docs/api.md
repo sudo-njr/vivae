@@ -144,7 +144,7 @@ serve(DIRECTORY, OPTIONS);
   - `.autoEncoding` (optional): Detect Gzip encoding in files automatically. Brotli is not supported because it doesn't have a magic number in it's buffer for detection.
   - `.headers` (optional): Decide what headers to apply depending on the file extension. This plugin applies defaults so you can only change or add to what it's currently set to.
 
-Example:
+### Example
 
 ```javascript
 serve("public", {
