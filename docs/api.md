@@ -28,10 +28,6 @@ const app = vivae({
 
 ### `.allowQueries`
 
-### `.easyHeaders`
-
-Unlike other settings, this one doesn't handle how Vivae behaves directly. It handles how [`serve()`](#static-serving---serve) and other plugins handle file extensions.
-
 ## Route Handler - `[server]`.use()
 
 The route handler defines how your HTTP server handles each path and it's assosiated method. It's structured like so:
@@ -133,4 +129,31 @@ vobj.respond(200, { "Content-Type": "application/json" });
 
 # Plugin API
 
+## Create Plugin - createPlugin()
+
 ## Static Serving - serve()
+
+```javascript
+import { serve } from "vivae/plugins";
+
+serve(DIRECTORY, OPTIONS);
+```
+
+- `DIRECTORY`:
+- `OPTIONS` (optional): You can pass an object to change how static serving behaves.
+  - `.autoEncoding` (optional): Detect Gzip encoding in files automatically. Brotli is not supported because it doesn't have a magic number in it's buffer for detection.
+  - `.headers` (optional): Decide what headers to apply depending on the file extension. This plugin applies defaults so you can only change or add to what it's currently set to.
+
+Example:
+
+```javascript
+serve("public", {
+  autoEncoding: false,
+  headers: {
+    ".unityweb": {
+      "Content-Encoding": "gzip",
+      "Content-Type": "application/octet-stream",
+    },
+  },
+});
+```
