@@ -24,7 +24,7 @@ Vivae uses less memory and is more stable than Express or Koa.
 - Express v5.1.0: ~43.45 MB
 - Koa v3.0.0: ~43.71 MB
 
-Vivae is a better option than either frameworks for high efficient and resource sensitive applications.
+Vivae is a better option than either frameworks for high efficient and resource sensitive applications. Tracked using Node's `process.memoryUsage()`.
 
 ## Installation
 
