@@ -10,7 +10,6 @@ Vivae is a lightweight, dependency-free Node.js framework designed to help you q
 
 - Configuration
 - Adding middleware
-- Content-Type Detection
 - Plugin Creation
 - Static Serving
 - TypeScript support
