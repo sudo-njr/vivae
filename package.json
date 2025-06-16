@@ -2,6 +2,9 @@
   "name": "vivae",
   "type": "commonjs",
   "version": "1.1.0",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
